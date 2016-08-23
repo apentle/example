@@ -3,7 +3,9 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "lint": "eslint .",
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
   },
   "dependencies": {
     "react": "15.2.1",
@@ -15,5 +17,28 @@
     "redux": "^3.5.2",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.3.1",
+    "eslint-plugin-react": "^6.1.2",
+    "eslint-plugin-react-native": "^2.0.0",
+    "jest-cli": "^14.1.0",
+    "react-native-babel-jest": "^0.1.0"
+  },
+  "jest": {
+    "scriptPreprocessor": "<rootDir>/node_modules/react-native-babel-jest",
+    "setupEnvScriptFile": "<rootDir>/node_modules/react-native-babel-jest/env.js",
+    "testPathIgnorePatterns": [
+      "/node_modules/"
+    ],
+    "testFileExtensions": [
+      "js"
+    ],
+    "unmockedModulePathPatterns": [
+      "react",
+      "promise",
+      "source-map"
+    ]
   }
 }
