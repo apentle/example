@@ -7,7 +7,8 @@
  * @flow
  */
 
-const app = require('./app');
+const loadModule = require('./loadModule');
 
-// Run app
-app();
+module.exports = function() {
+  loadModule(require('apentle-plugin-login'));
+};

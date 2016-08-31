@@ -7,7 +7,10 @@
  * @flow
  */
 
-const app = require('./app');
+module.exports = function() {
+  // Bootstrap themes
+  require('./themes')();
 
-// Run app
-app();
+  // Bootstrap plugins
+  require('./plugins')();
+};

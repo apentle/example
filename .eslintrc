@@ -17,6 +17,7 @@
     "__dirname": false,
     "__filename": false,
     "__fbBatchedBridgeConfig": false,
+    "_createRNElement": true,
     "alert": false,
     "cancelAnimationFrame": false,
     "clearImmediate": true,

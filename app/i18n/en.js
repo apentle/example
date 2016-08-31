@@ -7,7 +7,6 @@
  * @flow
  */
 
-const app = require('./app');
-
-// Run app
-app();
+module.exports = {
+  welcome: "Welcome to React Native!",
+};
