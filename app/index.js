@@ -22,6 +22,8 @@ module.exports = function() {
   require('./bootstrap')();
 
   // Create root component
+  const { styles } = theme;
+
   class Root extends React.Component {
     componentDidMount() {
       theme.setRoot(this);
@@ -38,7 +40,7 @@ module.exports = function() {
             {__('welcome')}
           </Text>
           <Text style={styles.instructions}>
-            To get started, edit index.[android|ios].js
+            To get started, edit app/index.js
           </Text>
           <Text style={styles.instructions}>
             Double tap R on your keyboard to reload,{'\n'}
@@ -48,25 +50,6 @@ module.exports = function() {
       );
     }
   }
-
-  const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-      fontSize: 20,
-      textAlign: 'center',
-      margin: 10,
-    },
-    instructions: {
-      textAlign: 'center',
-      color: '#333333',
-      marginBottom: 5,
-    },
-  });
 
   AppRegistry.registerComponent('Example', () => Root);
 };

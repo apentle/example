@@ -7,6 +7,6 @@
  * @flow
  */
 
-module.exports = {
-  welcome: 'Welcome to React Native!',
-};
+module.exports = [
+  require('./styles'),
+];

@@ -8,5 +8,4 @@
  */
 
 module.exports = {
-  welcome: 'Welcome to React Native!',
 };

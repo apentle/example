@@ -11,7 +11,7 @@
  * Default theme to run app
  *
  * You can change this name to your custom theme.
- * This name is not include 'apentle-theme-' prefix
+ * This name does not include 'apentle-theme-' prefix
  *
  * @const {string}
  */

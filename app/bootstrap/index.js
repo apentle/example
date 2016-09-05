@@ -7,7 +7,16 @@
  * @flow
  */
 
+const theme = require('react-native-theme');
+
 module.exports = function() {
+  // Bootstrap current app
+  theme.addComponents(require('../containers'));
+  theme.addComponents(require('../components'));
+  require('../styles').forEach(function(styles) {
+    theme.add(styles);
+  });
+
   // Bootstrap themes
   require('./themes')();
 
