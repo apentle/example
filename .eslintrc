@@ -26,6 +26,7 @@
     "console": false,
     "document": false,
     "escape": false,
+    "events": true,
     "exports": false,
     "global": false,
     "jest": false,

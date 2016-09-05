@@ -8,13 +8,11 @@
  */
 
 const React = require('react');
-const {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
-} = require('react-native');
-const { Provider } = require('react-redux');
+const {AppRegistry} = require('react-native');
+
+const {Provider} = require('react-redux');
+const configureStore = require('./store/configureStore');
+
 const theme = require('react-native-theme');
 
 module.exports = function() {
@@ -22,8 +20,7 @@ module.exports = function() {
   require('./bootstrap')();
 
   // Create root component
-  const { styles } = theme;
-
+  const {App, Loading} = theme;
   class Root extends React.Component {
     componentDidMount() {
       theme.setRoot(this);
@@ -33,23 +30,26 @@ module.exports = function() {
       theme.setRoot();
     }
 
+    constructor() {
+      super();
+      this.state = {
+        loading: true,
+        store: configureStore(() => this.setState({loading: false})),
+      };
+    }
+
     render() {
+      if (this.state.loading) {
+        return Loading === undefined ? null : <Loading />;
+      }
       return (
-        <View style={styles.container}>
-          <Text style={styles.welcome}>
-            {__('welcome')}
-          </Text>
-          <Text style={styles.instructions}>
-            To get started, edit app/index.js
-          </Text>
-          <Text style={styles.instructions}>
-            Double tap R on your keyboard to reload,{'\n'}
-            Shake or press menu button for dev menu
-          </Text>
-        </View>
+        <Provider store={this.state.store}>
+          <App />
+        </Provider>
       );
     }
   }
 
+  // Register app component
   AppRegistry.registerComponent('Example', () => Root);
 };
