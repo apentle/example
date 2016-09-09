@@ -41,14 +41,7 @@ function addTranslation(translations, locale) {
   if (I18n.translations[locale] === undefined) {
     I18n.translations[locale] = translations;
   } else {
-    if (typeof Object.assign === 'function') {
-      Object.assign(I18n.translations[locale], translations);
-    } else {
-      var data = I18n.translations[locale];
-      for (var key in translations) {
-        data[key] = translations[key];
-      }
-    }
+    Object.assign(I18n.translations[locale], translations);
   }
 }
 

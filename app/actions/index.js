@@ -7,7 +7,6 @@
  * @flow
  */
 
-module.exports = {
-  welcome: 'Welcome to Apentle!',
-  get_started: 'To get started, edit app/containers/App.js',
-};
+module.exports = [
+  'LOGIN',
+];

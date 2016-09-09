@@ -10,6 +10,7 @@
 const theme = require('react-native-theme');
 const addLayout = require('react-native-theme/layout');
 const addTranslation = require('./i18n');
+const addActions = require('./addActions');
 
 /**
  * loadModule - load module (theme or plugin) for app
@@ -41,6 +42,14 @@ function loadModule(data, name) {
   // I18n
   if (data.i18n !== undefined) {
     addTranslation(data.i18n);
+  }
+  // Redux actions
+  if (data.actions !== undefined) {
+    addActions(data.actions);
+  }
+  // Redux reducers
+  if (typeof data.reducers === 'function') {
+    data.reducers();
   }
 }
 

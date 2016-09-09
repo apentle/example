@@ -7,7 +7,12 @@
  * @flow
  */
 
-module.exports = {
-  welcome: 'Welcome to Apentle!',
-  get_started: 'To get started, edit app/containers/App.js',
+var {add} = require('redux-reducers-hub');
+
+module.exports = function() {
+  add({
+    LOGIN(state, action) {
+      return {...state, ...action.payload};
+    },
+  }, 'login');
 };

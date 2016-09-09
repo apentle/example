@@ -21,6 +21,7 @@ module.exports = function() {
 
   // Create root component
   const {App, Loading} = theme;
+
   class Root extends React.Component {
     componentDidMount() {
       theme.setRoot(this);

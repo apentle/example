@@ -12,6 +12,11 @@ const {Text, View} = require('react-native');
 
 import {styles} from 'react-native-theme';
 
+if (__DEV__) { // hot reload dependencies
+  require('../styles');
+  require('../i18n');
+}
+
 class App extends React.Component {
   render() {
     return (
@@ -20,11 +25,7 @@ class App extends React.Component {
           {__('welcome')}
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit app/index.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
+          {__('get_started')}
         </Text>
       </View>
     );

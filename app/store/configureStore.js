@@ -14,15 +14,6 @@ const createLogger = require('redux-logger');
 
 const reducers = require('redux-reducers-hub');
 
-// f8app style logger
-// @see http://makeitopen.com
-var isDebuggingInChrome = __DEV__ && !!window.navigator.userAgent;
-var logger = createLogger({
-  predicate: (getState, action) => isDebuggingInChrome,
-  collapsed: true,
-  duration: true,
-});
-
 /**
  * configureStore - create redux-store
  *
@@ -30,10 +21,15 @@ var logger = createLogger({
  * @returns {object}             redux-store
  */
 function configureStore(onComplete) {
-  // Apply middleware
+  // Apply middlewares
   var middlewares = [thunk];
   events.emit('middlewaresWillApply', middlewares);
-  middlewares.push(logger);
+  if (__DEV__ && !!window.navigator.userAgent) {
+    middlewares.push(createLogger({
+      collapsed: true,
+      duration: true,
+    }));
+  }
 
   // Create store
   var storeCreator = applyMiddleware.apply(null, middlewares)(createStore);
@@ -46,7 +42,7 @@ function configureStore(onComplete) {
   }
 
   // allow access store from chrome
-  if (isDebuggingInChrome) {
+  if (__DEV__ && !!window.navigator.userAgent) {
     window.store = result.store;
   }
   return result.store;

@@ -15,11 +15,12 @@ module.exports = {
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 23,
     textAlign: 'center',
     margin: 10,
   },
   instructions: {
+    fontSize: 18,
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,

@@ -8,9 +8,22 @@
  */
 
 const theme = require('react-native-theme');
+const layout = require('react-native-theme/layout');
 const EventEmitter = require('EventEmitter');
+const addActions = require('./addActions');
 
 module.exports = function() {
+  // Allow hot reload themes and plugins
+  if (__DEV__) {
+    // Reset all hub data
+    theme.reset();
+    layout.reset();
+    const actions = require('redux-actions-hub');
+    const reducers = require('redux-reducers-hub');
+    actions.reset();
+    reducers.reset();
+  }
+
   // Global event emitter
   global.events = new EventEmitter();
 
@@ -20,6 +33,8 @@ module.exports = function() {
   require('../styles').forEach(function(styles) {
     theme.add(styles);
   });
+  addActions(require('../actions'));
+  require('../reducers')();
 
   // Bootstrap themes
   require('./themes')();
