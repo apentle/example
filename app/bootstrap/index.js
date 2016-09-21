@@ -11,6 +11,7 @@ const theme = require('react-native-theme');
 const layout = require('react-native-theme/layout');
 const EventEmitter = require('EventEmitter');
 const addActions = require('./addActions');
+const addTranslation = require('./i18n');
 
 module.exports = function() {
   // Allow hot reload themes and plugins
@@ -27,18 +28,21 @@ module.exports = function() {
   // Global event emitter
   global.events = new EventEmitter();
 
-  // Bootstrap current app
-  theme.addComponents(require('../containers'));
-  theme.addComponents(require('../components'));
-  require('../styles').forEach(function(styles) {
-    theme.add(styles);
-  });
-  addActions(require('../actions'));
-  require('../reducers')();
-
   // Bootstrap themes
   require('./themes')();
 
   // Bootstrap plugins
   require('./plugins')();
+
+  // App's Redux
+  addActions(require('../actions'));
+  require('../reducers')();
+  // I18n
+  addTranslation(require('../i18n'));
+  // App's UI
+  theme.addComponents(require('../containers'));
+  theme.addComponents(require('../components'));
+  require('../styles').forEach(function(styles) {
+    theme.add(styles);
+  });
 };

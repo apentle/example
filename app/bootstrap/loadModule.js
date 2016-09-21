@@ -23,6 +23,11 @@ function loadModule(data, name) {
   if (typeof data !== 'object') {
     return;
   }
+  // Run before load module
+  if (typeof data.willLoad === 'function') {
+    data.willLoad();
+  }
+
   // CSS Style
   if (Array.isArray(data.styles)) {
     data.styles.forEach(function(styles) {
@@ -50,6 +55,11 @@ function loadModule(data, name) {
   // Redux reducers
   if (typeof data.reducers === 'function') {
     data.reducers();
+  }
+
+  // Run after load module
+  if (typeof data.loaded === 'function') {
+    data.loaded();
   }
 }
 

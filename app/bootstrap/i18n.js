@@ -10,7 +10,6 @@
 const I18n = require('react-native-i18n');
 
 I18n.fallbacks = true;
-I18n.translations = require('../i18n');
 
 if (typeof global.__ === 'undefined') {
   global.__ = I18n.t.bind(I18n);

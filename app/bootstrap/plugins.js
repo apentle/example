@@ -7,8 +7,31 @@
  * @flow
  */
 
+// eslint-disable-next-line no-unused-vars
 const loadModule = require('./loadModule');
 
-module.exports = function() {
-  loadModule(require('apentle-plugin-login'));
+/**
+ * plugins - load plugins
+ *
+ * @returns {undefined}
+ */
+module.exports = function plugins() {
+  /**
+   * List of plugins will be loaded while running the app.
+   *
+   * You can add more plugins to this list
+   * Plugin name does not include 'apentle-plugin-' prefix
+   *
+   * For Example:
+   * const load_plugins = [
+   *  'login',
+   *  'wordpress-blog',
+   * ];
+   *
+   * @const {array}
+   */
+  // eslint-disable-next-line no-unused-vars
+  const load_plugins = [
+    'example',
+  ];
 };
