@@ -51,6 +51,7 @@
     "Response": false,
     "ReactElement": false,
     "ReactClass": false,
+    "reduxStore": true,
     "Class": false
   },
 

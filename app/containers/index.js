@@ -8,5 +8,5 @@
  */
 
 module.exports = {
-  // App: require('./App'),
+  // App: () => require('./App'), // Lazy load React Component
 };

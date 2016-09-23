@@ -41,11 +41,8 @@ function configureStore(onComplete) {
     setTimeout(onComplete, 0);
   }
 
-  // allow access store from chrome
-  if (__DEV__ && !!window.navigator.userAgent) {
-    window.store = result.store;
-  }
-  return result.store;
+  global.reduxStore = result.store;
+  return reduxStore;
 }
 
 module.exports = configureStore;
